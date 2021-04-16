@@ -1,9 +1,5 @@
-import numpy as np
 import pandas as pd
-import matplotlib
 
-
-# pd.set_option('display.mpl_style', 'default') # Make the graphs a bit prettier
 
 def stratify_file(filename="Peru_2019_AudioMoth_Data_Full.csv"):
     df = pd.read_csv(filename)
@@ -18,8 +14,8 @@ def stratify_file(filename="Peru_2019_AudioMoth_Data_Full.csv"):
     viable_clips["StartDateTime"] = dates
 
     # clean world wildlife dates for clip parsing
-    wwf_clips['FileCreateDate'] = wwf_clips['FileCreateDate'].str.replace('-08:00', '')
-    ww_dates = pd.to_datetime(wwf_clips["FileCreateDate"], format="%Y:%m:%d %H:%M:%S")
+    wwf_clips['FileCreateDate'] = wwf_clips['Comment'].str[12:31]
+    ww_dates = pd.to_datetime(wwf_clips["FileCreateDate"], format="%H:%M:%S %d/%m/%Y")
     wwf_clips['FileCreateDate'] = ww_dates
 
     # find AudioMoth objects that have fewer than 24 clips for standard data
@@ -50,7 +46,7 @@ def stratify_file(filename="Peru_2019_AudioMoth_Data_Full.csv"):
     # drop index for csv prep
     stratified_clips = stratified_clips.drop('index', 1)
     stratified_clips.to_csv("Stratified_Clips.csv", index=False)
-    print(stratified_clips)
+
     return not stratified_clips.empty
 
 
