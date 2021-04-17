@@ -1,4 +1,4 @@
-# Acoustic Audio Stratification
+# Audio Stratification
 Welcome!
 This program performs audio data stratification from a .csv file utilizing the Pandas library. 
 
