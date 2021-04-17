@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def stratify_file(filename="Peru_2019_AudioMoth_Data_Full.csv"):
+def stratify_file(filename):
     df = pd.read_csv(filename)
 
     # select only viable clips (durations at least one minute) and filter for Comment data availability
