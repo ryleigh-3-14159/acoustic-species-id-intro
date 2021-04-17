@@ -1,5 +1,5 @@
 Stratified_Clips.csv
 .DS_Store
 Peru_2019_AudioMoth_Data_Full.csv
-
+.idea/csv_plugin
 
